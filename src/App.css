@@ -1,0 +1,429 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
+}
+
+.form-container {
+  max-width: 900px;
+  margin: 20px auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.form-header {
+  background: #253238;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-header .logo {
+  max-width: 400px;
+}
+
+.form-header .logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.form-header .info {
+  text-align: right;
+  font-size: 20px;
+}
+
+.form-header .info p {
+  text-align: left;
+  font-weight: 600;
+  margin: 10px 0;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.highlight-bar {
+  background: #8abf94;
+  padding: 8px;
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.doctor-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+
+}
+
+
+/* Section Titles */
+.section-title {
+  background: #253238;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Patient Info */
+.patient-info {
+  padding: 20px;
+}
+
+.patient-info>label {
+  display: inline-block;
+}
+
+.patient-info label {
+
+  width: 140px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: black;
+  font-weight: 300;
+
+}
+
+.patient-info input[type="text"],
+.patient-info input[type="email"],
+.patient-info input[type="tel"],
+.patient-info input[type="date"] {
+  width: calc(100% - 160px);
+  padding: 5px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.patient-info input[type="text"] :active,
+.patient-info input[type="email"] :active,
+.patient-info input[type="tel"] :active,
+.patient-info input[type="date"] :active {
+
+  border: none !important;
+  outline: none;
+}
+
+
+
+.checkbox-line {
+  margin: 15px 0;
+}
+
+@media (max-width: 600px) {
+
+  .patient-info input[type="text"],
+  .patient-info input[type="email"],
+  .patient-info input[type="tel"],
+  .patient-info input[type="date"] {
+    width: 100% !important;
+  }
+
+
+}
+
+
+/* Referral Reasons */
+.referral-reasons {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  font-size: 16px;
+}
+
+.referral-reasons label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Teeth Section */
+
+/* Teeth layout update */
+.primary-combined {
+  padding: 20px 80px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pd-r {
+  padding-right: 80px;
+}
+
+.pd-l {
+  padding-left: 80px;
+}
+
+.primary-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.teeth-section {
+  padding: 20px 0px;
+}
+
+.teeth-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.teeth-box {
+  display: grid;
+  overflow: hidden;
+  background: white;
+}
+
+.teeth-box.full {
+  grid-template-columns: repeat(16, 1fr);
+  flex: 1;
+}
+
+.teeth-box.half {
+  grid-template-columns: repeat(5, 1fr);
+  flex: 1;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+}
+
+.no-border {
+  border-bottom: none !important;
+}
+
+.no-border-left {
+  border-right: none !important;
+}
+
+.teeth-box label {
+  display: flex;
+  align-items: center;
+  line-height: 28px;
+  min-height: 28px;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.teeth-box label:last-child {
+  border-right: none;
+}
+
+.teeth-box input {
+  display: none;
+}
+
+input {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.teeth-box input:checked+span,
+.teeth-box label:has(input:checked) {
+  background: #8abf94;
+  color: #fff;
+}
+
+.teeth-box label:hover {
+  background: #f0f8ff;
+}
+
+.side-label {
+  font-weight: bold;
+  font-size: 14px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.teeth-section .section-title {
+  margin-bottom: 15px;
+}
+
+.teeth-numbers,
+.teeth-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.teeth-numbers span,
+.teeth-row span {
+  display: inline-block;
+  min-width: 28px;
+  min-height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+.teeth-row span {
+  border: none;
+  background: transparent;
+  font-weight: bold;
+  cursor: default;
+}
+
+.teeth-numbers span:hover {
+  background: #e6f2ff;
+  border-color: #8abf94;
+}
+
+.teeth-numbers span.selected {
+  background: #8abf94;
+  color: white;
+  border-color: #267acc;
+}
+
+/* ================= MOBILE SPECIFIC ================= */
+@media (max-width: 767px) {
+
+  .teeth-numbers span,
+  .teeth-row span {
+    font-size: 10px;
+    min-height: 15px;
+    min-width: 15px;
+    line-height: 20px;
+  }
+
+  .primary-combined {
+    flex-direction: row;
+    padding: 20px 10px !important;
+    gap: 5px;
+  }
+
+  .pd-r,
+  .pd-l {
+    padding: 0 !important;
+  }
+
+  .teeth-box.full {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 3px;
+  }
+
+  .teeth-box.half {
+    grid-template-columns: repeat(5, 1fr);
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+  }
+
+  .teeth-box label {
+    font-size: 12px;
+    padding: 4px 0;
+    min-height: 24px;
+    line-height: 24px;
+  }
+
+  .side-label {
+    font-size: 12px;
+    min-width: 30px;
+  }
+
+  .teeth-numbers span {
+    min-width: 24px;
+    min-height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+  }
+
+  .teeth-section {
+    padding: 10px 0;
+  }
+}
+
+
+/* Diagnosis/Comments Section */
+.comments-section {
+  padding: 20px;
+}
+
+.comments-section textarea {
+  width: 100%;
+  min-height: 100px;
+  resize: none;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+.comments-section label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.date-input {
+  border: none;
+  border-bottom: 1px solid #333;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .referral-reasons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-header .info {
+    text-align: left;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .patient-info label {
+    width: 100%;
+  }
+
+
+
+  .referral-reasons {
+    grid-template-columns: 1fr;
+  }
+}
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.general-error {
+  margin-top: 10px;
+  font-weight: bold;
+}
