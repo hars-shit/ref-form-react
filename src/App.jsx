@@ -200,7 +200,7 @@ const App = () => {
     }
 
     const pdf = backendResponse.data.media_url[0].url;
-    console.log("PDF uploaded:", pdf);
+   
     setPdfUrl(pdf);
 
     
@@ -208,10 +208,10 @@ const App = () => {
       "https://services.leadconnectorhq.com/hooks/L9XGANSmPqqpm8vIKVW9/webhook-trigger/401f2e5d-26a9-4e6c-a7e0-881fac99a413",
       jsonData
     );
-    console.log("GHL response:", ghl_response);
+   
 
   } catch (error) {
-    console.error("Form submission error:", error);
+    
     setGeneralError("Failed to submit the form. Please try again.");
   } finally {
     setLoading(false);
@@ -385,7 +385,7 @@ const App = () => {
           files={files}
           setFiles={setFiles}
           onFilesChange={(selectedFiles) => {
-            console.log("Selected files:", selectedFiles);
+      
 
           }}
         />
