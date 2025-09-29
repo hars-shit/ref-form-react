@@ -4,6 +4,7 @@ import html2canvas from 'html2canvas';
 import './App.css';
 import axios from 'axios';
 import MultiFileUpload from './MultiFileUpload';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const App = () => {
 
@@ -13,6 +14,26 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [files, setFiles] = useState([]);
   const [pdfUrl, setPdfUrl] = useState("")
+  const [captchaValue, setCaptchaValue] = useState(null);
+
+
+    const formatDate = (date) => {
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0"); 
+    const year = d.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+      const today = new Date();
+    const [selectedDate, setSelectedDate] = useState(formatDate(today));
+   const handleChange = (e) => {
+    const rawValue = e.target.value; 
+    setSelectedDate(formatDate(rawValue));
+  };
+
+  const handleCaptchaChange = (value) => {
+    setCaptchaValue(value);
+  };
 
 
   const generatePDF = async () => {
@@ -57,6 +78,12 @@ const App = () => {
 
 
  const handleSubmit = async () => {
+
+
+  //  if (!captchaValue) {
+  //     alert("Please verify the reCAPTCHA!");
+  //     return;
+  //   }
   setLoading(true);
   setErrors({});
   setGeneralError("");
@@ -139,11 +166,6 @@ const App = () => {
     const radiographsSent =
       Array.from(document.querySelectorAll(".comments-section input[type='checkbox']"))[1]?.checked || false;
 
-    const todayDate = new Date().toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    });
 
     const jsonData = {
       doctor,
@@ -153,7 +175,7 @@ const App = () => {
         email,
         callPatientForAppointment: callPatientForAppointment ? "Yes" : "No"
       },
-      referral: { doctor: refDoc, office: refOffice, date: todayDate },
+      referral: { doctor: refDoc, office: refOffice, date:formatDate(today)},
       reasonForReferral: reasons,
       teethOrAreaToBeTreated,
       comments,
@@ -161,7 +183,7 @@ const App = () => {
         callBeforeTreatment: callBeforeTreatment ? "Yes" : "No",
         radiographsSent: {
           sent: radiographsSent ? "Yes" : "No",
-          dateTaken: todayDate
+          dateTaken: selectedDate
         }
       },
     };
@@ -390,12 +412,18 @@ const App = () => {
         </label>
         <label>
           <input type="checkbox" /> I have sent radiographs for your evaluation. Date taken:
-          <span style={{ color: 'black' }}>
-            {new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
-          </span>
+       
+           <input
+        type="date"
+        onChange={handleChange}
+        style={{ padding: "5px", border: "1px solid #ccc", borderRadius: "4px" }}
+      />
         </label>
       </div>
-
+            <ReCAPTCHA
+        sitekey="6LfKF54rAAAAAEa7Baa_hBfQqcBblO1SKOKNzgjN" 
+        onChange={handleCaptchaChange}
+      />
       <div style={{ textAlign: "center", width: "100%", marginBottom: "2rem" }}>
         <button
           type="button"
