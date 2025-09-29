@@ -15,7 +15,7 @@ const App = () => {
   const [files, setFiles] = useState([]);
   const [pdfUrl, setPdfUrl] = useState("")
   const [captchaValue, setCaptchaValue] = useState(null);
-
+const [submitted, setSubmitted] = useState(false);
 
     const formatDate = (date) => {
     const d = new Date(date);
@@ -202,7 +202,7 @@ const App = () => {
     const pdf = backendResponse.data.media_url[0].url;
    
     setPdfUrl(pdf);
-
+     setSubmitted(true);
     
     const ghl_response = await axios.post(
       "https://services.leadconnectorhq.com/hooks/L9XGANSmPqqpm8vIKVW9/webhook-trigger/401f2e5d-26a9-4e6c-a7e0-881fac99a413",
@@ -428,20 +428,25 @@ const App = () => {
         <button
           type="button"
           onClick={handleSubmit}
-          disabled={loading}
+          disabled={loading || submitted}
           style={{
             marginTop: '20px',
             padding: '10px 20px',
-            backgroundColor: loading ? '#555' : '#253238',
+            backgroundColor: loading || submitted ? '#555' : '#253238',
             color: '#fff',
             border: 'none',
             borderRadius: '5px',
             fontSize: '20px',
             cursor: loading ? 'not-allowed' : 'pointer',
             transition: 'background-color 0.3s',
+             opacity: (loading || submitted) ? 0.6 : 1,
           }}
         >
-          {loading ? "Submitting..." : "Submit Your Application"}
+         {loading
+    ? "Submitting..."
+    : submitted
+      ? "Form Submitted Successfully"
+      : "Submit Your Application"}
         </button>
         {loading && <div className="loader"></div>}
         {generalError && <div className="error general-error">{generalError}</div>}
