@@ -190,7 +190,7 @@ const [submitted, setSubmitted] = useState(false);
 
 
     const backendResponse = await axios.post(
-      "https://crm-automation.medrebel.io/upload_pdf_webhook/L9XGANSmPqqpm8vIKVW9/",
+      "https://crm-automation.medrebel.io/upload_pdf_webhook/Tr8H09BXSbC2Ngwd2rDJ/",
       formData,
       { headers: { "Content-Type": "multipart/form-data" } }
     );
@@ -205,7 +205,7 @@ const [submitted, setSubmitted] = useState(false);
      setSubmitted(true);
     
     const ghl_response = await axios.post(
-      "https://services.leadconnectorhq.com/hooks/L9XGANSmPqqpm8vIKVW9/webhook-trigger/401f2e5d-26a9-4e6c-a7e0-881fac99a413",
+      "https://services.leadconnectorhq.com/hooks/Tr8H09BXSbC2Ngwd2rDJ/webhook-trigger/401f2e5d-26a9-4e6c-a7e0-881fac99a413",
       jsonData
     );
    
