@@ -457,3 +457,20 @@ input {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+@media screen and (max-width: 600px) {
+.logo{
+  max-width: 200px !important;
+}
+.info p{
+  font-size: 16px !important;
+}
+.doctor-select label {
+
+  font-size: 12px !important;
+}
+.patient-info label, .patient-info input , .comments-section > div, .referral-reasons , .comments-section label{
+  font-size: 14px !important;
+}
+}
